@@ -1,90 +1,63 @@
-# Hi, I'm Santiago 👋
+## Santiago Arteta
 
-Backend / DevOps / full-stack engineer based in **Córdoba, Argentina** 🇦🇷
+Backend / DevOps engineer. Córdoba, Argentina.
 
-I build small, opinionated tools that solve a **specific problem well** —
-usually at the intersection of **AWS infrastructure**, **backend APIs**,
-and **integrations** (Twilio, WordPress, MLS feeds, webhooks).
+I mostly work at the intersection of AWS infra, backend APIs, and third-party
+integrations (Twilio, WordPress, MLS feeds). Spanish first language,
+English fine for work.
 
----
+### What I've been doing
 
-## What I've been doing
+- **DevOps Team Lead @ Socialnet** (May 2025 → Apr 2026). Led a small DevOps
+  team, owned AWS infra design and rollout, coordinated with vendors, and
+  ran a rigorous NAT / idle-resource / rightsizing review that cut
+  infrastructure cost noticeably (that review is what eventually became
+  `aws-cost-optimizer-cli`).
+- **DBA & Backend @ DCS S.A.** (Aug 2022 → present). Java + PostgreSQL +
+  Node.js + Grafana. SQL plugins, query tuning, some production on-call.
+- **Freelance web dev** (since Jan 2023). WordPress, CRUD apps,
+  e-commerce, integrations. Upwork + direct clients.
 
-**DevOps Team Lead @ Socialnet** — *May 2025 → Apr 2026*
-Led a DevOps team, owned AWS infrastructure design & build, coordinated
-with vendors, and **reduced infrastructure costs by running a rigorous
-NAT / idle-resource / rightsizing review** (which eventually turned into
-the `aws-cost-optimizer-cli` repo below).
+### Pinned projects
 
-**Database Admin & Backend Developer @ DCS S.A.** — *Aug 2022 → Present*
-Java + PostgreSQL + Node.js + Grafana. SQL plugins, performance tuning,
-production on-call.
+**Infrastructure / DevOps**
 
-**Freelance Web Dev** — *Jan 2023 → Present*
-WordPress, CRUD apps, e-commerce, integrations. Upwork & direct clients.
+- [`terraform-aws-web-stack`](https://github.com/sarteta/terraform-aws-web-stack) —
+  3-tier web stack on AWS (VPC + ALB + ECS Fargate + RDS). Simple +
+  production examples, CI validation. Has a `nat_mode` knob because we
+  were wasting ~$100/mo on dev NATs at Socialnet.
+- [`aws-cost-optimizer-cli`](https://github.com/sarteta/aws-cost-optimizer-cli) —
+  Read-only Python CLI. Scans an account for idle EC2, orphan EBS,
+  oversized RDS, dev NATs, S3 without lifecycle policies. `boto3` +
+  mock mode. Produces a CSV/Markdown you can paste into Jira.
 
----
+**Integrations / automation**
 
-## Pinned projects
+- [`whatsapp-twilio-lead-router`](https://github.com/sarteta/whatsapp-twilio-lead-router) —
+  Node/Express. Twilio SMS in → rule-based intent classifier → WhatsApp
+  auto-reply + Slack ping for hot leads. SQLite event log, idempotent
+  on `MessageSid`, quiet-hours aware. `npm run demo` shows the flow
+  without Twilio creds.
+- [`claude-mls-wordpress-sync`](https://github.com/sarteta/claude-mls-wordpress-sync) —
+  Python async diff-sync: MLS (RESO / Bridge / Spark / mock adapter) →
+  WordPress Custom Post Type via REST. YAML-driven field mapping,
+  atomic state store, dead-letter log.
 
-### 🏗️ Infrastructure / DevOps
+### Stack
 
-- **[terraform-aws-web-stack](https://github.com/sarteta/terraform-aws-web-stack)**
-  — 3-tier containerised web stack on AWS (VPC + ALB + ECS Fargate + RDS
-  Postgres). Ships with simple + production examples, CI validation, and
-  a `nat_mode` knob that saves teams ~$100/mo on dev stacks.
+AWS (VPC, ECS Fargate, RDS, S3, CloudFront, IAM, Secrets Manager),
+Terraform, GitHub Actions, Docker. Python (FastAPI, asyncio, pydantic),
+Node.js (Express), Java, a bit of Go. PostgreSQL, SQLite, Redis,
+DynamoDB. TypeScript, React, WordPress / PHP on the legacy side.
+Twilio, Stripe, PayPal, WP REST, custom MLS feeds (RESO Web API),
+webhooks, OAuth.
 
-- **[aws-cost-optimizer-cli](https://github.com/sarteta/aws-cost-optimizer-cli)**
-  — Read-only Python CLI that scans an AWS account for cost leaks: idle
-  EC2, orphan EBS, oversized RDS, dev NATs, S3 buckets with no lifecycle
-  policy. `boto3` + a mock mode for demos. **18/18 tests pass**.
+### Hiring
 
-### 🔌 Integrations / automation
+Open to USD contract / freelance. ~20 hrs/week, remote, UTC-3
+(flexible for US hours). Spanish (native), English (professional),
+Portuguese (conversational).
 
-- **[whatsapp-twilio-lead-router](https://github.com/sarteta/whatsapp-twilio-lead-router)**
-  — Node/Express service: Twilio SMS inbound → rule-first intent classifier
-  (buyer / seller / investor / nurture / spam / STOP / HELP) → WhatsApp
-  auto-reply + high-intent Slack notification. SQLite event log,
-  idempotent via MessageSid, quiet-hours aware. **27/27 tests pass**,
-  `npm run demo` shows the full flow without Twilio creds.
-
-- **[claude-mls-wordpress-sync](https://github.com/sarteta/claude-mls-wordpress-sync)**
-  — Python async diff-sync engine: pulls MLS listings (RESO / Bridge /
-  Spark / mock adapter) → upserts into WordPress CPT via REST. YAML-
-  driven field mapping, atomic state store, dead-letter logging.
-  **13/13 tests pass**, `python -m src.sync --provider mock --dry-run`
-  shows the engine.
-
----
-
-## Stack
-
-- **Cloud / infra:** AWS (VPC, ECS Fargate, RDS, S3, CloudFront, IAM,
-  Secrets Manager), Terraform, GitHub Actions, Docker
-- **Backend:** Python (FastAPI, asyncio, pydantic), Node.js (Express,
-  ES modules), Java, Go (learning)
-- **Data:** PostgreSQL, SQLite, Redis, DynamoDB
-- **Frontend:** TypeScript, React, WordPress / PHP (legacy)
-- **Integrations:** Twilio, Stripe, PayPal, WordPress REST, custom MLS
-  feeds (RESO Web API), webhooks, OAuth
-
----
-
-## Hiring me
-
-I'm open to **USD contract / freelance** work.
-
-- ⏱️ 20 hrs/week available
-- 🌎 Remote, UTC-3 (flexible)
-- 💬 Spanish (native), English (full professional), Portuguese
-  (conversational)
-- 🔗 [Upwork](https://www.upwork.com/freelancers/~01)  •  [LinkedIn](https://www.linkedin.com/in/santiago-arteta-4541a5211/)
-
-Best way to reach me: **open an issue on any of the pinned repos**, or
-ping me via Upwork.
-
----
-
-<sub>This README is itself versioned in
-[`sarteta/sarteta`](https://github.com/sarteta/sarteta). Every change is
-a commit.</sub>
+Find me on [Upwork](https://www.upwork.com/freelancers/~01) or
+[LinkedIn](https://www.linkedin.com/in/santiago-arteta-4541a5211/).
+For issues, PRs, or just questions, any of the pinned repos is fine.
