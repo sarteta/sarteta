@@ -58,6 +58,6 @@ Open to USD contract / freelance. ~20 hrs/week, remote, UTC-3
 (flexible for US hours). Spanish (native), English (professional),
 Portuguese (conversational).
 
-Find me on [Upwork](https://www.upwork.com/freelancers/~01) or
+Find me on [Upwork](https://www.upwork.com/freelancers/~01a85ffa3165fb83c7) or
 [LinkedIn](https://www.linkedin.com/in/santiago-arteta-4541a5211/).
 For issues, PRs, or just questions, any of the pinned repos is fine.
