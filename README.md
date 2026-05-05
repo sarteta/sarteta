@@ -11,9 +11,13 @@ Available immediately for remote contractor work. Dual Argentine + Spanish citiz
 ### MCP / AI Infrastructure
 
 - [`mcp-postgres-doctor`](https://github.com/sarteta/mcp-postgres-doctor) — MCP-native Postgres diagnostic server. 9 read-only tools, hard safety gate, Docker compose, GHCR image, 37 tests in CI.
+- [`mcp-aws-cost-doctor`](https://github.com/sarteta/mcp-aws-cost-doctor) — MCP server: AWS cost-leak finder (idle EC2, orphaned EBS, unused EIPs, oversized RDS) for AI agents.
+- [`mcp-cloudwatch-explorer`](https://github.com/sarteta/mcp-cloudwatch-explorer) — MCP server: CloudWatch metrics, alarms, log error filtering — read-only.
 - [`mcp-supabase-latam`](https://github.com/sarteta/mcp-supabase-latam) — MCP server for LATAM SMB Supabase administration.
 - [`pgvector-rag-starter`](https://github.com/sarteta/pgvector-rag-starter) — multi-tenant RAG reference on Postgres + pgvector.
 - [`whatsapp-rag-eval-kit`](https://github.com/sarteta/whatsapp-rag-eval-kit) — YAML-driven evaluation harness for WhatsApp RAG bots.
+
+> The MCP trio (`mcp-postgres-doctor` + `mcp-aws-cost-doctor` + `mcp-cloudwatch-explorer`) lets one Claude session triage a production stack — DB load, cloud spend, observability — in a single conversation.
 
 ### SRE / DevOps / Postgres
 
