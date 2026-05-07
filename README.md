@@ -1,31 +1,37 @@
 ## Santiago Arteta
 
-**AI Infrastructure & MCP Engineer · Senior SRE/DevOps**
+**Senior SRE/DevOps · Postgres-focused tooling · MCP servers**
 
-Argentina-based, 4 years building production cloud infra for high-traffic banking systems. Now focused on the layer where AI agents meet real data: MCP servers, RAG pipelines, agentic tooling for Postgres + AWS workloads.
+4 years operating production Postgres + AWS at SocialNet (Valida -- biometric identity SaaS, clients Banco Galicia + Banco Supervielle, ISO 27001 migration). Lead SRE/DevOps role through 2026-04. Now focused on open-source tooling for Postgres operations and MCP servers that plug AI agents into real production data.
 
-Previously Lead SRE/DevOps at SocialNet (Valida — biometric identity SaaS for Banco Galicia + Banco Supervielle), led ISO 27001 migration with 99.9% uptime and 24/7 incident response.
+Available for remote contractor work. Dual Argentine + Spanish citizenship -- no sponsorship needed for EU, US, or LATAM clients.
 
-Available immediately for remote contractor work. Dual Argentine + Spanish citizenship — no sponsorship needed for EU/US/LATAM clients.
+### Postgres operations (7 repos)
 
-### MCP / AI Infrastructure
+A cluster of tools that follow the order real Postgres incidents are resolved: rank cost, fix the top queries, validate migrations, watch autovacuum, drop dead indexes.
 
-- [`mcp-postgres-doctor`](https://github.com/sarteta/mcp-postgres-doctor) — MCP-native Postgres diagnostic server. 9 read-only tools, hard safety gate, Docker compose, GHCR image, 37 tests in CI.
-- [`mcp-aws-cost-doctor`](https://github.com/sarteta/mcp-aws-cost-doctor) — MCP server: AWS cost-leak finder (idle EC2, orphaned EBS, unused EIPs, oversized RDS) for AI agents.
-- [`mcp-cloudwatch-explorer`](https://github.com/sarteta/mcp-cloudwatch-explorer) — MCP server: CloudWatch metrics, alarms, log error filtering — read-only.
-- [`mcp-supabase-latam`](https://github.com/sarteta/mcp-supabase-latam) — MCP server for LATAM SMB Supabase administration.
-- [`pgvector-rag-starter`](https://github.com/sarteta/pgvector-rag-starter) — multi-tenant RAG reference on Postgres + pgvector.
-- [`whatsapp-rag-eval-kit`](https://github.com/sarteta/whatsapp-rag-eval-kit) — YAML-driven evaluation harness for WhatsApp RAG bots.
+- [`pg-plan-lint`](https://github.com/sarteta/pg-plan-lint) -- lints EXPLAIN ANALYZE plans for anti-patterns (Seq Scan + Filter on big tables, Hash spilling to disk, Nested Loop on too many outer rows, planner row-estimate skew). JSON or text input.
+- [`postgres-tuning-cookbook`](https://github.com/sarteta/postgres-tuning-cookbook) -- three patterns + CLI for the order Postgres tuning actually pays off: rank queries by cost, find autovacuum stalls, find unused indexes.
+- [`postgres-migration-safety`](https://github.com/sarteta/postgres-migration-safety) -- 10-rule linter for migration files. Catches CREATE INDEX without CONCURRENTLY, ADD COLUMN NOT NULL without DEFAULT, ADD FK without NOT VALID, etc.
+- [`postgres-incident-toolkit`](https://github.com/sarteta/postgres-incident-toolkit) -- live incident detection: long queries, lock waits, replication lag, bloat. Read-only.
+- [`postgres-production-playbook`](https://github.com/sarteta/postgres-production-playbook) -- diagnostic SQL keyed to symptom (slow writes, disk filling, plan regressions, etc.)
+- [`postgres-bloat-report`](https://github.com/sarteta/postgres-bloat-report) -- scans for bloated tables and indexes, reports estimated reclaimable bytes.
+- [`mcp-postgres-doctor`](https://github.com/sarteta/mcp-postgres-doctor) -- the same scanners exposed over MCP, so a Claude session can run them mid-incident.
 
-> The MCP trio (`mcp-postgres-doctor` + `mcp-aws-cost-doctor` + `mcp-cloudwatch-explorer`) lets one Claude session triage a production stack — DB load, cloud spend, observability — in a single conversation.
+### MCP / AI infrastructure
 
-### SRE / DevOps / Postgres
+- [`mcp-aws-cost-doctor`](https://github.com/sarteta/mcp-aws-cost-doctor) -- MCP server: AWS cost leaks (idle EC2, orphaned EBS, unused EIPs, oversized RDS).
+- [`mcp-cloudwatch-explorer`](https://github.com/sarteta/mcp-cloudwatch-explorer) -- MCP server: CloudWatch metrics, alarms, log error filtering. Read-only.
+- [`mcp-supabase-latam`](https://github.com/sarteta/mcp-supabase-latam) -- MCP server for LATAM SMB Supabase administration.
+- [`pgvector-rag-starter`](https://github.com/sarteta/pgvector-rag-starter) -- multi-tenant RAG reference on Postgres + pgvector.
+- [`whatsapp-rag-eval-kit`](https://github.com/sarteta/whatsapp-rag-eval-kit) -- YAML-driven evaluation harness for WhatsApp RAG bots.
 
-- [`slo-toolkit`](https://github.com/sarteta/slo-toolkit) — multi-window burn-rate alerts and Grafana dashboards from a YAML SLO spec.
-- [`postgres-production-playbook`](https://github.com/sarteta/postgres-production-playbook) — diagnostic SQL queries and runbooks for PostgreSQL on-call work.
-- [`terraform-aws-web-stack`](https://github.com/sarteta/terraform-aws-web-stack) — production-grade Terraform modules for 3-tier containerized AWS web stack (VPC + ALB + ECS Fargate + RDS Multi-AZ).
-- [`aws-cost-optimizer-cli`](https://github.com/sarteta/aws-cost-optimizer-cli) — read-only audit CLI that flags 7 classes of AWS cost waste.
-- [`s3-lifecycle-audit`](https://github.com/sarteta/s3-lifecycle-audit) — declared lifecycle intent vs live S3 account drift detection.
+### SRE / DevOps / IaC
+
+- [`slo-toolkit`](https://github.com/sarteta/slo-toolkit) -- multi-window burn-rate alerts + Grafana dashboards from a YAML SLO spec.
+- [`terraform-aws-web-stack`](https://github.com/sarteta/terraform-aws-web-stack) -- 3-tier containerized AWS web stack (VPC + ALB + ECS Fargate + RDS Multi-AZ).
+- [`aws-cost-optimizer-cli`](https://github.com/sarteta/aws-cost-optimizer-cli) -- read-only audit CLI for 7 classes of AWS cost waste.
+- [`s3-lifecycle-audit`](https://github.com/sarteta/s3-lifecycle-audit) -- declared lifecycle vs live S3 drift detection.
 
 ### Stack
 
@@ -39,16 +45,14 @@ Available immediately for remote contractor work. Dual Argentine + Spanish citiz
 ![Anthropic](https://img.shields.io/badge/Anthropic_Claude-D97757?logo=anthropic&logoColor=white)
 ![MCP](https://img.shields.io/badge/MCP-000000?logo=anthropic&logoColor=white)
 
-### What I bring
+### What I do
 
-- **MCP servers in production** — designed safety boundaries (read-only enforcement), test coverage, developer-facing docs.
-- **Banking-grade reliability** — ISO 27001 compliance, multi-bank production (Galicia + Supervielle).
-- **Postgres deep dive** — replication, query tuning, bloat analysis, MCP-based diagnostics.
-- **AWS IaC at scale** — Terraform modules, multi-AZ deployments, cost auditing.
-- **Spanish/English C2** (EF SET 73/100) — ready for LATAM, EU, US clients.
+- Postgres at production scale: pg_stat_statements, replication, autovacuum, query plan analysis. Six public repos in the cluster above.
+- AWS IaC: Terraform modules, multi-AZ ECS/RDS, cost auditing, GitHub Actions pipelines.
+- MCP servers as a real interface for AI agents to operate against production data, with read-only safety boundaries.
+- Banking-grade compliance: ISO 27001 migration, 24/7 on-call rotation, SLO/SLI definition.
+- English C2 (EF SET 73/100), Spanish native.
 
 ---
 
-📄 [Download CV (English, PDF)](https://github.com/sarteta/sarteta/raw/main/CV-Santiago-Arteta-EN.pdf)
-
-📧 santiagoarteta@gmail.com · 💼 [LinkedIn](https://www.linkedin.com/in/santiago-arteta/) · 🌐 [github.com/sarteta](https://github.com/sarteta)
+[CV English (PDF)](https://github.com/sarteta/sarteta/raw/main/CV-Santiago-Arteta-EN.pdf) · santiagoarteta@gmail.com · [LinkedIn](https://www.linkedin.com/in/santiago-arteta/) · [github.com/sarteta](https://github.com/sarteta)
