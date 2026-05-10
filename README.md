@@ -6,10 +6,11 @@
 
 Available for remote contractor work. Dual Argentine + Spanish citizenship -- no sponsorship needed for EU, US, or LATAM clients.
 
-### Postgres operations (7 repos)
+### Postgres operations (8 repos)
 
-A cluster of tools that follow the order real Postgres incidents are resolved: rank cost, fix the top queries, validate migrations, watch autovacuum, drop dead indexes.
+A cluster of tools that follow the order real Postgres incidents are resolved: rank cost, fix the top queries, validate migrations, watch autovacuum, drop dead indexes, audit the pooler.
 
+- [`pgbouncer-audit`](https://github.com/sarteta/pgbouncer-audit) -- 10-rule linter for pgbouncer.ini. Catches pool_mode mismatches, weak auth_type, undersized max_client_conn, missing ignore_startup_parameters that breaks ORMs.
 - [`pg-plan-lint`](https://github.com/sarteta/pg-plan-lint) -- lints EXPLAIN ANALYZE plans for anti-patterns (Seq Scan + Filter on big tables, Hash spilling to disk, Nested Loop on too many outer rows, planner row-estimate skew). JSON or text input.
 - [`postgres-tuning-cookbook`](https://github.com/sarteta/postgres-tuning-cookbook) -- three patterns + CLI for the order Postgres tuning actually pays off: rank queries by cost, find autovacuum stalls, find unused indexes.
 - [`postgres-migration-safety`](https://github.com/sarteta/postgres-migration-safety) -- 10-rule linter for migration files. Catches CREATE INDEX without CONCURRENTLY, ADD COLUMN NOT NULL without DEFAULT, ADD FK without NOT VALID, etc.
